@@ -23,7 +23,8 @@ public class ExceptionController {
             HeroesException heroesException = (HeroesException) e;
             return ResultUtil.error(heroesException.getCode(),heroesException.getMessage());
         }else {
-            return ResultUtil.error(ResultStatus.UNKNOW_ERROR.getCode(),ResultStatus.UNKNOW_ERROR.getMsg());
+            return ResultUtil.error(ResultStatus.UNKNOW_ERROR.getCode(),
+                    ResultStatus.UNKNOW_ERROR.getMsg()+":"+e.getMessage());
         }
     }
 }
