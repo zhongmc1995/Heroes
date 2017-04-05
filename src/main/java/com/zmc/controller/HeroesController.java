@@ -41,11 +41,11 @@ public class HeroesController {
     * 添加英雄
     * */
     @PostMapping("/heroes")
-    public Heroes addHeroes(@Validated Heroes heroes, BindingResult bindingResult) throws Exception {
+    public Result addHeroes(@Validated Heroes heroes, BindingResult bindingResult) throws Exception {
         if (bindingResult.hasErrors()){
             throw new HeroesException(ResultStatus.ARGUMENT_BINDING_ERROR);
         }else {
-            return heroesService.addOneHero(heroes);
+            return ResultUtil.success(heroesService.addOneHero(heroes),1);
         }
     }
 
