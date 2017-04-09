@@ -8,5 +8,14 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
+  redis:
+    host: 120.24.78.196
+    port: 6379
+    database: 0
+    pool:
+      max-active: 8
+      max-wait: -1
+      max-idle: 8
+      min-idle: 0
 server:
   port: 8081

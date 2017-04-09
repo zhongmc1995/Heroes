@@ -53,6 +53,7 @@ public class HeroesController {
     * 删除英雄
     * */
     @DeleteMapping("/heroes/{id}")
+    @ResponseStatus
     public Result delHeroById(@PathVariable("id") Integer id) {
         try {
             heroesService.delOneHeroById(id);

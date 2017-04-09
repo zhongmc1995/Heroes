@@ -6,6 +6,7 @@ import com.zmc.exception.HeroesException;
 import com.zmc.repository.HeroesRepository;
 import com.zmc.service.HeroesService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,12 +19,16 @@ public class HeroesServiceImpl implements HeroesService {
     @Autowired
     private HeroesRepository heroesRepository;
     @Override
+    @Cacheable(value = "hero",keyGenerator = "heroesKeyGenerator")
     public Heroes getOneHeroById(Integer id) throws Exception {
+        System.out.println("from database");
         return heroesRepository.findOne(id);
     }
 
     @Override
+    @Cacheable(value = "heroese",keyGenerator = "heroesKeyGenerator")
     public List<Heroes> getAllHeroesAsList() throws Exception {
+        System.out.println("from database");
         return heroesRepository.findAll();
     }
 
